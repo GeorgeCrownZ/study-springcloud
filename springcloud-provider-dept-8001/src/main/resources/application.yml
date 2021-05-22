@@ -1,0 +1,33 @@
+server:
+  port: 8001
+
+#mybatis配置
+mybatis:
+  type-aliases-package: com.zc.springcloud.pojo
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+
+#spring的配置
+spring:
+  application:
+    name: springcloud-provider-dept #三个服务名字一致！
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://47.98.47.51:3306/DB01?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root3306
+
+#Eureka的配置，服务注册到哪里
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/,http://localhost:7002/eureka/,http://localhost:7003/eureka/
+  instance:
+    instance-id: springcloud-provider-dept8001  #修改eureka上的默认描述信息
+
+#info配置
+info:
+  app.name: zhaocan-springcloud
+  company.name: zhaocan233.top
